@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html layout:decorate="layouts/defaultTemplate" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Search</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+
+		<div class="container mt-3 mb-3">
+
+			<form action="#" th:action="@{/orders/searchResults}" th:object="${searchOrdersModel}" method="post">
+
+				<div class="mb-3">
+					<label for="searchTerm" class="form-label">Search for an item</label>
+					<input type="text" class="form-control" id="searchTerm"
+						placeHolder="search for something interesting" required th:field="*{searchTerm}">
+					<div class="fieldError">
+						<p th:if="${#fields.hasErrors('searchTerm')}" th:errors="*{errorNo}">Search Term Error</p>
+					</div>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+
+		</div>
+	</div>
+</body>
+
+</html>

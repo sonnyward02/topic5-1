@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html layout:decorate="layouts/defaultTemplate" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+
+		<div class="container mt-3 mb-3">
+
+			<form action="#" th:action="@{/orders/addNew}" th:object="${orderModel}" method="post">
+
+				<div class="mb-3">
+					<label for="orderNumberInput" class="form-label">Order Number</label>
+					<input type="text" class="form-control" id="orderNumberInput" placeHolder="001" required
+						th:field="*{orderNo}">
+					<div class="fieldError">
+						<p th:if="${#fields.hasErrors('orderNo')}" th:errors="*{errorNo}">Order Number Error</p>
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<label for="productNameInput" class="form-label">Product Name</label>
+					<input type="text" class="form-control" id="productNameInput" placeHolder="Some amazing product"
+						required th:field="*{productName}">
+					<div class="fieldError">
+						<p th:if="${#fields.hasErrors('productName')}" th:errors="*{errorNo}">Product Name Error</p>
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<label for="productPriceInput" class="form-label">Product Price</label>
+					<input type="text" class="form-control" id="productPriceInput" required th:field="*{price}">
+					<div class="fieldError">
+						<p th:if="${#fields.hasErrors('price')}" th:errors="*{errorNo}">Product Price Error</p>
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<label for="productQuantityInput" class="form-label">Qty</label>
+					<input type="text" class="form-control" id="productQuantityInput" required th:field="*{quantity}">
+					<div class="fieldError">
+						<p th:if="${#fields.hasErrors('quantity')}" th:errors="*{errorNo}">Product Qty Error</p>
+					</div>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+
+		</div>
+	</div>
+</body>
+
+</html>
